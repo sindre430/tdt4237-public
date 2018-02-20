@@ -1,10 +1,10 @@
-In the process of patching the web application, it may be useful to run it locally on your own computer. Below is a set of working instructions for deploying and running the web application on a Windows machine. The setup will likely be similar with Mac OS X.
+In the process of patching the web application, it may be useful to run it locally on your own computer. Below is a set of working instructions for deploying and running the web application on a Windows machine. It has been tested on a fresh install of Windows 10 on a VM. The setup will likely be similar with Mac OS X, but I don't have a ready made procedure for deploying on Mac.
 
 1. Download php7.0.x, the thread safe version, from http://windows.php.net/download#php-7.0
 2. Extract the downloaded archive to <your_php_directory>
 3. Open PowerShell, and type
 
-                setx path "%path%;<your_php_directory> 
+                setx path "%path%;<your_php_directory>"
                 
 Restart PowerShell.
 
