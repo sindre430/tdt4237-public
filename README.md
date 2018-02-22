@@ -13,6 +13,10 @@ Restart PowerShell.
 6. Open XAMPP. Open Apache > Config > httpd.conf. Replace 'DocumentRoot "C:/xampp/apache/htdocs"' with  'DocumentRoot "C:/xampp/apache/htdocs/public"'. Replace '<Directory "C:/xampp/htdocs">' with '<Directory "C:/xampp/htdocs/public">'
 7. Download and install Visual C++ Redistributable for Visual Studio 2015. https://www.microsoft.com/en-us/download/details.aspx?id=48145
 8. Download this GitHub repository to c:\xampp\htdocs, so that all files are extracted directly to htdocs/
+```
+                cd "c:\xampp\htdocs\tdt4237-public" 
+                git clone 
+```
 9. Download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 10. In PowerShell, enter 
 
