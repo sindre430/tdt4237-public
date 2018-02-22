@@ -3,14 +3,15 @@ In the process of patching the web application, it may be useful to run it local
 1. In order to run PHP on windows you must download and install Visual C++ Redistributable for Visual Studio 2015. https://www.microsoft.com/en-us/download/details.aspx?id=48145 
 
 2. Download php7.0.x, the thread safe version, from http://windows.php.net/download#php-7.0
-
+   __Due to unwanted errors, please don't go any further before you have completed this step. Please be patient.__
+   
 3. Extract the downloaded archive to <your_php_directory>. For example in "C:\Program Files\Php".
-
+  
 4. Open PowerShell, and type
 
                 setx path "%path%;<your_php_directory>"
                 
-Restart PowerShell.
+   Restart PowerShell.
 
 5. Download and install XAMPP to c:\xampp (or another directory without special permissions). Download XAMPP from here: https://www.apachefriends.org/xampp-files/7.2.2/xampp-win32-7.2.2-0-VC15-installer.exe
 
