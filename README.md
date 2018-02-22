@@ -14,13 +14,13 @@ Restart PowerShell.
 7. Download and install Visual C++ Redistributable for Visual Studio 2015. https://www.microsoft.com/en-us/download/details.aspx?id=48145
 8. Download this GitHub repository to c:\xampp\htdocs, so that all files are extracted directly to htdocs/
 ```
-                cd "c:\xampp\htdocs\tdt4237-public" 
-                git clone 
+                cd "c:\xampp\htdocs\" 
+                git clone https://github.com/magnublo/tdt4237-public.git
 ```
 9. Download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 10. In PowerShell, enter 
 
-                cd "c:\xampp\htdocs\" 
+                cd "c:\xampp\htdocs\tdt4237-public\" 
                 composer install
                 
 11. Open XAMPP. Start Apache and MySQL. Open MySQL -> Admin. This should open phpMyAdmin in your web browser. Click the tab that says "SQL". Copy and paste this into the text field and execute:
