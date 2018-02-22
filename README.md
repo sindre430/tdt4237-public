@@ -9,11 +9,15 @@ In the process of patching the web application, it may be useful to run it local
 Restart PowerShell.
 
 4. Download and install XAMPP to c:\xampp (or another directory without special permissions). Download XAMPP from here: https://www.apachefriends.org/xampp-files/7.2.2/xampp-win32-7.2.2-0-VC15-installer.exe
+
 5. Delete the contents of C:\xampp\htdocs
-6. Open XAMPP Control Panel. Click on Config next to Apache, choose "Apache httpd.conf". 
-Replace 'DocumentRoot "C:/xampp/apache/htdocs"' with  'DocumentRoot "C:/xampp/apache/htdocs"'. 
-Replace '<Directory "C:/xampp/htdocs">' with '<Directory "C:/xampp/htdocs/tdt4237-public">'. Save the file and close it.
+
+6. Open the XAMPP Control Panel. Click on "Config" next to Apache, then choose "Apache httpd.conf". 
+Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with  ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
+Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. Save the file and close it.
+
 7. Download and install Visual C++ Redistributable for Visual Studio 2015. https://www.microsoft.com/en-us/download/details.aspx?id=48145
+
 8. Download this GitHub repository to c:\xampp\htdocs, so that all files are extracted directly to htdocs/
 ```
                 cd "c:\xampp\htdocs\" 
@@ -31,6 +35,7 @@ Replace '<Directory "C:/xampp/htdocs">' with '<Directory "C:/xampp/htdocs/tdt423
                 use inventory;
 
 and click "Do".
+Restart Apache and MySQL.
 
 12. Go to http://localhost:80 in your web browser and enjoy.
 
