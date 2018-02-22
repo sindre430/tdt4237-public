@@ -20,20 +20,17 @@ Restart PowerShell.
 Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with  ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
 Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. Save the file and close it.
 
-8. Download this GitHub repository to c:\xampp\htdocs, so that __all files__ are extracted in c:\xampp\htdocs\tdt4237-public\
+(Notice that this assumes you have git installed)
+8. Download this GitHub repository to c:\xampp\htdocs, so that __all files__ are extracted in "c:\xampp\htdocs\tdt4237-public\" .
+Download the zip [here](https://github.com/magnublo/tdt4237-public/archive/master.zip). Change folder name from "tdt4237-public-master" to "tdt4237-public".
+
+OR you could use git command in powershell:
 ```
-                In powershell:
-          
                 cd "c:\xampp\htdocs\" 
                 git clone https://github.com/magnublo/tdt4237-public.git
-                
+               
                 (Notice that this assumes you have git installed )
                 
-                OR
-                
-                Download the zip [here](https://github.com/magnublo/tdt4237-public/archive/master.zip)
-                and extract the folder to "c:\xampp\htdocs\".
-                Change folder name from "tdt4237-public-master" to "tdt4237-public".
 ```
 9. Download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 10. In PowerShell, enter 
