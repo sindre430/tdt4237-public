@@ -20,8 +20,7 @@ Restart PowerShell.
 Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with  ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
 Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. Save the file and close it.
 
-8. Download this GitHub repository to c:\xampp\htdocs, so that __all files__ are extracted in "c:\xampp\htdocs\tdt4237-public\" .
-Download the zip [here](https://github.com/magnublo/tdt4237-public/archive/master.zip). Change folder name from "tdt4237-public-master" to "tdt4237-public".
+8. Download this [GitHub repository](https://github.com/magnublo/tdt4237-public/archive/master.zip) and change the folder name from "tdt4237-public-master" to "tdt4237-public". Extract the folder to "c:\xampp\htdocs\" .
 
 **OR** you could use the git command in powershell:
 ```
@@ -37,7 +36,7 @@ Download the zip [here](https://github.com/magnublo/tdt4237-public/archive/maste
                 cd "c:\xampp\htdocs\tdt4237-public\" 
                 composer install
                 
-11. Open XAMPP. Start Apache and MySQL. Open MySQL -> Admin. This should open phpMyAdmin in your web browser. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
+11. Open XAMPP Control Panel. Make sure to start Apache and MySQL. Click on "Admin" next to MySQL. This should open phpMyAdmin in your web browser. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
 
 ```
                 create database inventory;
@@ -218,4 +217,5 @@ Restart Apache and MySQL.
 12. Go to http://localhost:80 in your web browser and enjoy.
 
 
-You may try using another web server software, but the Pokedex AS application is a bit picky with server software configuration. The $_GET variable needs to be populated with the URL string, so that when you enter `http://localhost/thisIsAURLString`, `var_dump($_GET);` must return `array(1) { ["url"]=> string(16) "thisIsAURLString" }`. XAMPP Apache behaves like this by default, so it's practical and easy to use.
+
+NOTICE: You may try using another web server software, but the Pokedex AS application is a bit picky with server software configuration. The $_GET variable needs to be populated with the URL string, so that when you enter `http://localhost/thisIsAURLString`, `var_dump($_GET);` must return `array(1) { ["url"]=> string(16) "thisIsAURLString" }`. XAMPP Apache behaves like this by default, so it's practical and easy to use.
