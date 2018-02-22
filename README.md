@@ -3,7 +3,7 @@ In the process of patching the web application, it may be useful to run it local
 1. In order to run PHP on windows you must download and install Visual C++ Redistributable for Visual Studio 2015. https://www.microsoft.com/en-us/download/details.aspx?id=48145 
 
 2. Download php7.0.x, the thread safe version, from http://windows.php.net/download#php-7.0
-   __Due to unwanted errors, please don't go any further before you have completed this step. Please be patient.__
+   __Due to unwanted errors, please don't go any further before you have completed this step. Please be patient. :)__
    
 3. Extract the downloaded archive to <your_php_directory>. For example in "C:\Program Files\Php".
   
@@ -18,26 +18,30 @@ In the process of patching the web application, it may be useful to run it local
 6. Delete the contents of C:\xampp\htdocs
 
 7. Open the XAMPP Control Panel. Click on "Config" next to Apache, then choose "Apache httpd.conf". 
-Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with  ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
-Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. Save the file and close it.
+   
+    - Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
+    - Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. 
+    - Save the file and close it.
 
-8. Download this [GitHub repository](https://github.com/magnublo/tdt4237-public/archive/master.zip) and change the folder name from "tdt4237-public-master" to "tdt4237-public". Extract the folder to "c:\xampp\htdocs\" .
+8. Download this [GitHub repository](https://github.com/magnublo/tdt4237-public/archive/master.zip) and change the folder name from       "tdt4237-public-master" to "tdt4237-public". Extract the folder to "c:\xampp\htdocs\" .
 
-**OR** you could use the git command in powershell:
+   **OR** you could download the repo by using the git command in powershell:
 ```
                 cd "c:\xampp\htdocs\" 
                 git clone https://github.com/magnublo/tdt4237-public.git
                
-                (Notice that this assumes you have git installed )
+                ( Notice that this assumes you have git installed )
                 
 ```
-9. Download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
+9. You should now have a document-tree that looks like this: "C:\xampp\htdocs\tdt4237-public\", containing files. 
+   Next, download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
+
 10. In PowerShell, enter 
 
                 cd "c:\xampp\htdocs\tdt4237-public\" 
                 composer install
                 
-11. Open XAMPP Control Panel. Make sure to start Apache and MySQL. Click on "Admin" next to MySQL. This should open phpMyAdmin in your web browser. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
+11. Open XAMPP Control Panel. Make sure to start Apache and MySQL. Click on "Admin" next to MySQL. This should open phpMyAdmin in your web browser. This is the interface of your database. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
 
 ```
                 create database inventory;
@@ -209,14 +213,10 @@ ALTER TABLE `comments`
                 
 ```
 
-
-
-
-and then click "Do/Execute" in the far right corner.
-Restart Apache and MySQL.
+if not done already, click "Do/Execute" in the far right corner to execute the SQL script and setup the inventory database.
+Finally but not least, restart Apache and MySQL.
 
 12. Go to http://localhost:80 in your web browser and enjoy.
-
 
 
 NOTICE: You may try using another web server software, but the Pokedex AS application is a bit picky with server software configuration. The $_GET variable needs to be populated with the URL string, so that when you enter `http://localhost/thisIsAURLString`, `var_dump($_GET);` must return `array(1) { ["url"]=> string(16) "thisIsAURLString" }`. XAMPP Apache behaves like this by default, so it's practical and easy to use.
