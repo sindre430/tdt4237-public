@@ -20,11 +20,10 @@ Restart PowerShell.
 Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with  ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
 Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. Save the file and close it.
 
-(Notice that this assumes you have git installed)
 8. Download this GitHub repository to c:\xampp\htdocs, so that __all files__ are extracted in "c:\xampp\htdocs\tdt4237-public\" .
 Download the zip [here](https://github.com/magnublo/tdt4237-public/archive/master.zip). Change folder name from "tdt4237-public-master" to "tdt4237-public".
 
-OR you could use git command in powershell:
+**OR** you could use the git command in powershell:
 ```
                 cd "c:\xampp\htdocs\" 
                 git clone https://github.com/magnublo/tdt4237-public.git
