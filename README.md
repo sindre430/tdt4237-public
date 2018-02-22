@@ -24,6 +24,7 @@ Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt
 ```
                 cd "c:\xampp\htdocs\" 
                 git clone https://github.com/magnublo/tdt4237-public.git
+                (This assumes you have git installed )
 ```
 9. Download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 10. In PowerShell, enter 
