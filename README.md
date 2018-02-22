@@ -204,7 +204,7 @@ ALTER TABLE `comments`
 
 
 
-and then click "Do".
+and then click "Do" in the far right corner.
 Restart Apache and MySQL.
 
 12. Go to http://localhost:80 in your web browser and enjoy.
