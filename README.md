@@ -19,9 +19,9 @@ In the process of patching the web application, it may be useful to run it local
 
 7. Open the XAMPP Control Panel. Click on "Config" next to Apache, then choose "Apache httpd.conf". 
    
-    - Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
-    - Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. 
-    - Save the file and close it.
+   - Replace ' DocumentRoot "C:/xampp/apache/htdocs" ' with ' DocumentRoot "C:/xampp/apache/htdocs/tdt4237-public/public" '. 
+   - Replace ' <Directory "C:/xampp/htdocs"> ' with ' <Directory "C:/xampp/htdocs/tdt4237-public/public"> '. 
+   - Save the file and close it.
 
 8. Download this [GitHub repository](https://github.com/magnublo/tdt4237-public/archive/master.zip) and change the folder name from       "tdt4237-public-master" to "tdt4237-public". Extract the folder to "c:\xampp\htdocs\" .
 
@@ -41,12 +41,12 @@ In the process of patching the web application, it may be useful to run it local
                 cd "c:\xampp\htdocs\tdt4237-public\" 
                 composer install
                 
-11. Open XAMPP Control Panel. Make sure to start Apache and MySQL. Click on "Admin" next to MySQL. This should open phpMyAdmin in your web browser. This is the interface of your database. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
+11. Open XAMPP Control Panel. Make sure to start Apache and MySQL. Click on "Admin" next to MySQL. This should open phpMyAdmin in your web-rowser. This is the interface of your database. Click the tab that says "SQL". Copy ALL of the SQL code below and paste it into the text field and execute:
 
 ```
-                create database inventory;
-                use inventory;
-                SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+create database inventory;
+use inventory;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
