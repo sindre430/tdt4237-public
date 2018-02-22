@@ -19,7 +19,7 @@ Restart PowerShell.
                 cd "c:\xampp\htdocs\" 
                 composer install
                 
-11. Open XAMPP. Start Apache and MySQL. Open MySQL -> Admin -> SQL. Copy and paste this into the text field and execute:
+11. Open XAMPP. Start Apache and MySQL. Open MySQL -> Admin. This should open phpMyAdmin in your web browser. Click the tab that says "SQL". Copy and paste this into the text field and execute:
 
                 create database inventory;
                 use inventory;
