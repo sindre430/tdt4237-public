@@ -25,14 +25,13 @@ In the process of patching the web application, it may be useful to run it local
 
 8. Download this [GitHub repository](https://github.com/magnublo/tdt4237-public/archive/master.zip) and change the folder name from       "tdt4237-public-master" to "tdt4237-public". Extract the folder to "c:\xampp\htdocs\" .
 
-   **OR** you could download the repo by using the git command in powershell:
+   **OR** you could download the repository by using the `git` command in PowerShell:
 ```
                 cd "c:\xampp\htdocs\" 
                 git clone https://github.com/magnublo/tdt4237-public.git
-               
-                ( Notice that this assumes you have git installed )
-                
 ```
+(Note that the last option requires you have `git` installed)
+
 9. You should now have a document-tree that looks like this: "C:\xampp\htdocs\tdt4237-public\", containing files. 
    Next, download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 
