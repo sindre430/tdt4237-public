@@ -32,7 +32,7 @@ In the process of patching the web application, it may be useful to run it local
 ```
 (Note that the last option requires you have `git` installed)
 
-9. You should now have a document-tree that looks like this: "C:\xampp\htdocs\tdt4237-public\", containing files. 
+9. You should now have a path that looks like this: "C:\xampp\htdocs\tdt4237-public\", containing the web application files. 
    Next, download and install Composer. Click next on everything. https://getcomposer.org/Composer-Setup.exe
 
 10. In PowerShell, enter 
