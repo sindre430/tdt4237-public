@@ -212,8 +212,7 @@ ALTER TABLE `comments`
                 
 ```
 
-if not done already, click "Do/Execute" in the far right corner to execute the SQL script and setup the inventory database.
-Finally but not least, restart Apache and MySQL.
+If you haven't already, click "Do/Execute" in the far right corner to execute the SQL script and setup the inventory database. Restart Apache and MySQL.
 
 12. Go to http://localhost:80 in your web browser and enjoy.
 
