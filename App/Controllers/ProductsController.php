@@ -153,7 +153,13 @@ class ProductsController extends Controller {
     }
 
     public function edit($id) {
+
         if(!empty($_POST)) {
+
+            /*if($_POST['user'] !== $_COOKIE['user']){
+                App::redirect('products');
+                return;
+            }*/
             $title       = isset($_POST['title']) ? $_POST['title'] : '';
             $description = isset($_POST['description']) ? $_POST['description'] : '';
             $category    = isset($_POST['category']) ? $_POST['category'] : '';
@@ -222,14 +228,18 @@ class ProductsController extends Controller {
             $model3 = new RevisionsModel();
             $revisions = $model3->revisions($id, 'products');
 
-            $this->render('pages/products_edit.twig', [
-                'title'       => 'Edit product',
-                'description' => 'Products - Just a simple inventory management system.',
-                'page'        => 'products',
-                'revisions'   => $revisions,
-                'data'        => $data,
-                'categories'  => $categories
-            ]);
+            if($data->id){
+                $this->render('pages/products_edit.twig', [
+                    'title'       => 'Edit product',
+                    'description' => 'Products - Just a simple inventory management system.',
+                    'page'        => 'products',
+                    'revisions'   => $revisions,
+                    'data'        => $data,
+                    'categories'  => $categories
+                ]);
+            }else{
+                App::redirect('products');
+            }
         }
     }
 
