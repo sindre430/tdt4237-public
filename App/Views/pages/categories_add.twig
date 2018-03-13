@@ -17,14 +17,14 @@
                 <div class="card">
                     <div class="form-control">
                         <label for="title">Title</label>
-                        <input type="text" name="title" placeholder="Your title" id="title" class="{{ errors.title ? 'errors-border' : '' }}" value="{{ (data.title ? data.title|escape('js')|escape('html') : '')}}">
+                        <input type="text" name="title" placeholder="Your title" id="title" class="{{ errors.title ? 'errors-border' : '' }}" value="{{ (data.title ? data.title|escape : '')}}">
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="form-control">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" rows="8" cols="80" class="{{ errors.description ? 'errors-border' : '' }}">{{ (data.description ? data.description|escape('js')|escape('html') : '')}}</textarea>
+                        <textarea name="description" id="description" rows="8" cols="80" class="{{ errors.description ? 'errors-border' : '' }}">{{ (data.description ? data.description|escape : '')}}</textarea>
                     </div>
                 </div>
             </div>

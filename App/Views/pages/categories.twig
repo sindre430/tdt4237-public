@@ -21,9 +21,9 @@
                                 </div>
                             </div>
 
-                            <h2 class="category-title">{{ category.title|escape('js')|escape('html')}}</h2>
-                            <p class="category-description">{{ excerpt(category.description, 220)|escape('js')|escape('html')}}</p>
-                            <span>Created </span><span class="category-creation moment-date">{{ category.created_at|escape('js')|escape('html')}}</span>
+                            <h2 class="category-title">{{ category.title|escape}}</h2>
+                            <p class="category-description">{{ excerpt(category.description, 220)|escape}}</p>
+                            <span>Created </span><span class="category-creation moment-date">{{ category.created_at}}</span>
                         </div>
                     </div>
                 {% endfor %}

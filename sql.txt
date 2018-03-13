@@ -1,4 +1,6 @@
-﻿SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+﻿create database inventory;
+use inventory;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -127,7 +129,11 @@ INSERT INTO `comments` (`id`, `created_at`, `user`, `text`) VALUES
 (6, '2017-03-08 23:08:10', 'user1', 'i make inhackable webapps'),
 (7, '2017-03-08 23:07:15', 'user1', 'no one interested?');
 
-
+CREATE TABLE `login_attempts` (
+  `id` int(11) NOT NULL,
+  `attempts` int(11) NOT NULL,
+  `last_try` int(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 ALTER TABLE `categories`
@@ -146,6 +152,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 
