@@ -18,7 +18,7 @@ class ProductsModel extends Model {
     }
 
     public function value() {
-        $elements = $this->query("SELECT * FROM {$this->table} WHERE user = '{$this->username}'");
+        $elements = $this->query("SELECT * FROM {$this->table} WHERE user = ?", [$this->username]);
         return count($elements);
     }
 

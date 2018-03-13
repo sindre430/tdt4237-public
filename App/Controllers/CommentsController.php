@@ -16,8 +16,8 @@ class CommentsController extends Controller {
                 $model = new CommentsModel;
                 $model->create([
                     'created_at' => date('Y-m-d H:i:s'),
-                    'user'       => $_COOKIE['user'],
-                    'text'       => $text
+                    'user'       => $_SESSION['user'],
+                    'text'       => filter_var($text, FILTER_SANITIZE_STRING)
                 ]);
             }
          App::redirect('dashboard');

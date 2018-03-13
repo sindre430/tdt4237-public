@@ -33,7 +33,7 @@ class ProductsController extends Controller {
         $categories_value = $model2->allotment();
 
         $model3  = new ReportsModel();
-        $reports = $model3->all($_COOKIE['user']);
+        $reports = $model3->all($_SESSION['user']);
         
         $model4 = new CommentsModel();
         $comments = $model4->getShoutBox();
@@ -105,7 +105,7 @@ class ProductsController extends Controller {
                     'quantity'    => $quantity,
                     'media'       => $media_url,
                     'created_at'  => date('Y-m-d H:i:s'),
-                    'user'        => $_COOKIE['user']
+                    'user'        => $_SESSION['user']
                 ]);
 
                 App::redirect('products');
@@ -113,7 +113,7 @@ class ProductsController extends Controller {
 
             else {
                 $model = new CategoriesModel();
-                $categories  = $model->all($_COOKIE['user']);
+                $categories  = $model->all($_SESSION['user']);
                 $this->render('pages/products_add.twig', [
                     'title'       => 'Add product',
                     'description' => 'Products - Just a simple inventory management system.',
@@ -132,7 +132,7 @@ class ProductsController extends Controller {
 
         else {
             $model = new CategoriesModel();
-            $categories  = $model->all($_COOKIE['user']);
+            $categories  = $model->all($_SESSION['user']);
             
             if ($categories){
                 $this->render('pages/products_add.twig', [
@@ -155,11 +155,6 @@ class ProductsController extends Controller {
     public function edit($id) {
 
         if(!empty($_POST)) {
-
-            /*if($_POST['user'] !== $_COOKIE['user']){
-                App::redirect('products');
-                return;
-            }*/
             $title       = isset($_POST['title']) ? $_POST['title'] : '';
             $description = isset($_POST['description']) ? $_POST['description'] : '';
             $category    = isset($_POST['category']) ? $_POST['category'] : '';
@@ -216,52 +211,52 @@ class ProductsController extends Controller {
                     ]
                 ]);
             }
-        }
-
-        else {
+        }else {
             $model = new CategoriesModel();
-            $categories  = $model->all();
+            $categories = $model->all();
 
             $model2 = new ProductsModel();
-            $data   = $model2->find($id);
+            $data = $model2->find($id);
 
-            $model3 = new RevisionsModel();
-            $revisions = $model3->revisions($id, 'products');
+            if ($_SESSION['user'] === $data->user){
+                $model3 = new RevisionsModel();
+                $revisions = $model3->revisions($id, 'products');
 
-            if($data->id){
                 $this->render('pages/products_edit.twig', [
-                    'title'       => 'Edit product',
+                    'title' => 'Edit product',
                     'description' => 'Products - Just a simple inventory management system.',
-                    'page'        => 'products',
-                    'revisions'   => $revisions,
-                    'data'        => $data,
-                    'categories'  => $categories
+                    'page' => 'products',
+                    'revisions' => $revisions,
+                    'data' => $data,
+                    'categories' => $categories
                 ]);
-            }else{
-                App::redirect('products');
-            }
+            }else App::redirect('products');
         }
     }
 
     public function delete($id) {
         if(!empty($_POST)) {
             $model = new ProductsModel();
-            $file  = $model->find($id)->media;
-            unlink(__DIR__ . '/../../public/uploads/' . $file);
-            $model->delete($id);
-
+            $data = $model->find($id);
+            if ($_SESSION['user'] === $data->user){
+                $file  = $data->media;
+                unlink(__DIR__ . '/../../public/uploads/' . $file);
+                $model->delete($id);
+            }
             App::redirect('products');
         }
 
         else {
             $model = new ProductsModel();
             $data  = $model->find($id);
-            $this->render('pages/products_delete.twig', [
-                'title'       => 'Delete product',
-                'description' => 'Products - Just a simple inventory management system.',
-                'page'        => 'products',
-                'data'        => $data
-            ]);
+            if ($_SESSION['user'] === $data->user){
+                $this->render('pages/products_delete.twig', [
+                    'title'       => 'Delete product',
+                    'description' => 'Products - Just a simple inventory management system.',
+                    'page'        => 'products',
+                    'data'        => $data
+                ]);
+            }else App::redirect('products');
         }
     }
 

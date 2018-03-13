@@ -70,9 +70,7 @@ class FormValidator {
     public function validImage($element, $value, $message) {
         if(empty($value)) {
             $this->errors[$element] = $message;
-        }
-
-        else {
+        }else{
             if(empty($value['type'])) {
                 $this->errors[$element] = $message;
                 return;
@@ -80,6 +78,11 @@ class FormValidator {
 
             if($value['size'] > 1000000) {
                 $this->errors[$element] = "Your media is too big (> 1Mo)";
+                return;
+            }
+
+            if(!exif_imagetype($value['tmp_name'])) {
+                $this->errors[$element] = $message;
                 return;
             }
         }

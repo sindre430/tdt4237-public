@@ -13,7 +13,7 @@ class ReportsController extends Controller {
 
     public function all() {
         $model = new ReportsModel();
-        $data  = $model->all($_COOKIE['user']);
+        $data  = $model->all($_SESSION['user']);
 
         $this->render('pages/reports.twig', [
             'title'       => 'Reports',
@@ -82,22 +82,27 @@ class ReportsController extends Controller {
     public function delete($id) {
         if(!empty($_POST)) {
             $model = new ReportsModel();
-            $file  = $model->find($id)->file;
-            unlink(__DIR__ . '/../../public/uploads/' . $file);
-            $model->delete($id);
+            $data = $model->find($id);
+            if ($_SESSION['user'] === $data->user){
+                $file  = $model->find($id)->file;
+                unlink(__DIR__ . '/../../public/uploads/' . $file);
+                $model->delete($id);
 
+            }
             App::redirect('reports');
         }
 
         else {
             $model = new ReportsModel();
             $data = $model->find($id);
-            $this->render('pages/reports_delete.twig', [
-                'title'       => 'Delete report',
-                'description' => 'Reports - Just a simple inventory management system.',
-                'page'        => 'reports',
-                'data'        => $data
-            ]);
+            if ($_SESSION['user'] === $data->user) {
+                $this->render('pages/reports_delete.twig', [
+                    'title' => 'Delete report',
+                    'description' => 'Reports - Just a simple inventory management system.',
+                    'page' => 'reports',
+                    'data' => $data
+                ]);
+            }else App::redirect('reports');
         }
     }
 

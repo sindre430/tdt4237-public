@@ -10,7 +10,7 @@ class Model {
     
     
     public function __construct(){
-        if (isset ($_COOKIE['user'])){ $this->username = $_COOKIE['user'];}
+        if (isset ($_SESSION['user'])){ $this->username = $_SESSION['user'];}
     }
 
     public function all($user = null) {
@@ -22,7 +22,7 @@ class Model {
     }
 
     public function find($id) {
-        return $this->query("SELECT * FROM {$this->table} WHERE id = {$id} AND user = '{$this->username}'", null, true);
+        return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], null, true);
     }
 
     public function update($id, $fields) {

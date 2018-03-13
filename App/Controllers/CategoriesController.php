@@ -14,7 +14,7 @@ class CategoriesController extends Controller {
 
     public function all() {
         $model = new CategoriesModel();
-        $data  = $model->all($_COOKIE['user']);
+        $data  = $model->all($_SESSION['user']);
 
         $this->render('pages/categories.twig', [
             'title'       => 'Categories',
@@ -36,10 +36,10 @@ class CategoriesController extends Controller {
             if($validator->isValid()) {
                 $model = new CategoriesModel();
                 $model->create([
-                    'title'       => $title,
-                    'description' => $description,
+                    'title'       => filter_var($title, FILTER_SANITIZE_STRING),
+                    'description' => filter_var($description, FILTER_SANITIZE_STRING),
                     'created_at'  => date('Y-m-d H:i:s'),
-                    'user'        => $_COOKIE['user']
+                    'user'        => $_SESSION['user']
                 ]);
 
                 App::redirect('categories');
@@ -52,8 +52,8 @@ class CategoriesController extends Controller {
                     'page'        => 'categories',
                     'errors'      => $validator->getErrors(),
                     'data'        => [
-                        'title'       => $title,
-                        'description' => $description
+                        'title'       => filter_var($title, FILTER_SANITIZE_STRING),
+                        'description' => filter_var($description, FILTER_SANITIZE_STRING)
                     ]
                 ]);
             }
@@ -80,8 +80,8 @@ class CategoriesController extends Controller {
             if($validator->isValid()) {
                 $model = new CategoriesModel();
                 $model->update($id, [
-                    'title'       => $title,
-                    'description' => $description
+                    'title'       => filter_var($title, FILTER_SANITIZE_STRING),
+                    'description' => filter_var($description, FILTER_SANITIZE_STRING)
                 ]);
 
                 $revisions = new RevisionsModel();
@@ -105,8 +105,8 @@ class CategoriesController extends Controller {
                     'revisions'   => $revisions,
                     'errors'      => $validator->getErrors(),
                     'data'        => [
-                        'title'       => $title,
-                        'description' => $description
+                        'title'       => filter_var($title, FILTER_SANITIZE_STRING),
+                        'description' => filter_var($description, FILTER_SANITIZE_STRING)
                     ]
                 ]);
             }
@@ -116,43 +116,49 @@ class CategoriesController extends Controller {
             $model = new CategoriesModel();
             $data = $model->find($id);
 
-            $model2    = new RevisionsModel();
-            $revisions = $model2->revisions($id, 'categories');
+            if ($_SESSION['user'] === $data->user){
+                $model2    = new RevisionsModel();
+                $revisions = $model2->revisions($id, 'categories');
 
-            $this->render('pages/categories_edit.twig', [
-                'title'       => 'Edit category',
-                'description' => 'Categories - Just a simple inventory management system.',
-                'page'        => 'categories',
-                'revisions'   => $revisions,
-                'data'        => $data
-            ]);
+                $this->render('pages/categories_edit.twig', [
+                    'title'       => 'Edit category',
+                    'description' => 'Categories - Just a simple inventory management system.',
+                    'page'        => 'categories',
+                    'revisions'   => $revisions,
+                    'data'        => $data
+                ]);
+            }else App::redirect('categories');
         }
     }
 
     public function delete($id) {
-        $model2 = new ProductsModel($_COOKIE['user']);
+        $model2 = new ProductsModel($_SESSION['user']);
         $products = $model2->getProductsByCategoryId($id);
         
         if(!empty($_POST)) {
-            foreach($products as $product){
-                $model2->delete($product->id);
-            }
-            
             $model = new CategoriesModel();
-            $model->delete($id);
+            $data = $model->find($id);
+            if ($_SESSION['user'] === $data->user) {
+                foreach ($products as $product) {
+                    $model2->delete($product->id);
+                }
+                $model->delete($id);
+            }
             App::redirect('categories');
         }
 
         else {
-            $model = new CategoriesModel($_COOKIE['user']);
+            $model = new CategoriesModel($_SESSION['user']);
             $data = $model->find($id);
-            $this->render('pages/categories_delete.twig', [
-                'title'       => 'Delete category',
-                'description' => 'Categories - Just a simple inventory management system.',
-                'page'        => 'categories',
-                'data'        => $data,
-                'products'    => $products
-            ]);
+            if ($_SESSION['user'] === $data->user){
+                $this->render('pages/categories_delete.twig', [
+                    'title'       => 'Delete category',
+                    'description' => 'Categories - Just a simple inventory management system.',
+                    'page'        => 'categories',
+                    'data'        => $data,
+                    'products'    => $products
+                ]);
+            }else App::redirect('categories');
         }
     }
 

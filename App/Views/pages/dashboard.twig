@@ -135,7 +135,7 @@
                                     </div>
                                     
                                     <div class="product-text">
-                                        <p>{{ comment.text | raw}}</p>
+                                        <p>{{ comment.text|escape('js')|escape('html')}}</p>
                                     </div>
                                     <br>
                                     </div>

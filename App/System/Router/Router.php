@@ -16,12 +16,25 @@ class Router {
         $this->url = $url['url'];
     }
 
+    private function isIsessionActive(){
+        $active = true;
+        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+            session_unset();
+            session_destroy();
+            $active= false;
+        }
+        if($active) $_SESSION['LAST_ACTIVITY'] = time();
+        return $active;
+    }
+
     public function get($path, $callable, $name = null) {
-        return $this->add($path, $callable, $name, 'GET');
+        if($this->isIsessionActive()) return $this->add($path, $callable, $name, 'GET');
+        else return null;
     }
 
     public function post($path, $callable, $name = null) {
-        return $this->add($path, $callable, $name, 'POST');
+        if($this->isIsessionActive()) return $this->add($path, $callable, $name, 'POST');
+        else return null;
     }
 
     public function error($callable) {

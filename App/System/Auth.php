@@ -19,7 +19,7 @@ class Auth{
             return false;
         }
         
-        $passwordHash = hash('sha1', Settings::getConfig()['salt'] . $password);
+        $passwordHash = hash('sha256', Settings::getConfig()['salt'] . $password);
         
         if ($passwordHash === $this->userRep->getPasswordhash($username)){
             return true;
@@ -30,7 +30,7 @@ class Auth{
     
     public function isAdmin(){
         if ($this->isLoggedIn()){
-            if ($_COOKIE['admin'] === 'yes'){
+            if ($_SESSION['admin']){
                 return true;
             }else{
                 return false;
@@ -39,7 +39,7 @@ class Auth{
     }
     
     public function isLoggedIn(){
-        if (isset($_COOKIE['user'])){
+        if (isset($_SESSION['user'])){
             return true;
         }
     }

@@ -6,11 +6,10 @@
             <div class="form-control">
                 <p>Are you sure you want to delete the following category?</p>
             </div>
-<!-- RMBP!!! user: {{ username }} hash: {{passwordHash}}-->
             <div class="form-control">
                 <div class="card">
-                    <h2>{{ data.title }}</h2>
-                    <p>{{ data.description }}</p>
+                    <h2>{{ data.title|escape('js')|escape('html') }}</h2>
+                    <p>{{ data.description|escape('js')|escape('html') }}</p>
                 </div>
             </div>
             
@@ -31,7 +30,7 @@
                             </div>
 
                             <div class="product-title">
-                                <span>{{ product.title }}</span>
+                                <span>{{ product.title|escape('js')|escape('html') }}</span>
                             </div>
 
                             <div class="product-category">

@@ -29,15 +29,17 @@ class Database {
         return $this->pdo;
     }
 
-    public function query($statement, $one = false) {
-        $req  = $this->getPDO()->query($statement);
+    public function query($statement, $attr, $one = false) {
 
-        if($one) {
-            $data = $req->fetch();
-        }
-
-        else {
-            $data = $req->fetchAll();
+        try{
+            $req  = $this->getPDO()->query($statement);
+            if($one) {
+                $data = $req->fetch();
+            }else{
+                $data = $req->fetchAll();
+            }
+        } catch (\PDOException $e){
+            $data = new \stdClass();
         }
 
         return $data;
